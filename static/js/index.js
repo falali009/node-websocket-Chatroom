@@ -23,6 +23,7 @@
   const mixin={
     data(){
       return {
+        cemianshow:true,
         loginUser:{
         },
         messageData:{},

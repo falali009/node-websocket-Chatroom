@@ -18,19 +18,19 @@
   <template id="webChat">
     <div class="webChat-warp">
       <div class="webChat-container webChat-clear" v-if="loginUser.id">
-        <div class="webChat-menu-warp">
-          <div class="webChat-login-avatar" @click=“”>
+        <div class="webChat-menu-warp" v-show="cemianshow">
+          <div class="webChat-login-avatar" >
             <img :src="loginUser.avatarUrl" alt="">
           </div>
           <ul class="webChat-menu-list">
             <li :class="{active:curMenu==='chat'}"><span class="iconfont icon-comments" @click="curMenu='chat'"></span></li>
             <li :class="{active:curMenu==='cog'}"><span class="iconfont icon-cog" @click="curMenu='cog'"></span></li>
-            <!-- <li :class="{active:curMenu==='cog'}"><span class="iconfont icon-info" @click="curMenu='about'"></span></li> -->
+            <li :class="{active:curMenu==='cog'}"><span class="iconfont icon-info" @click="curMenu='about'"></span></li>
           </ul>
         </div>
         <div class="webChat-panel">
           <div class="webChat-clear webChat-panel-item" v-show="curMenu=='chat'">
-            <div class="webChat-users-warp">
+            <div class="webChat-users-warp" v-show="cemianshow">
               <div class="webChat-search-container">
                 <span class="iconfont icon-search"></span>
                 <input type="text" placeholder="搜索" v-model="keyword" class="webChat-search-input">
@@ -53,7 +53,7 @@
               </div>
             </div>
             <div class="webChat-session-panel" v-if="curSession.id">
-              <div class="webChat-session-header">
+              <div class="webChat-session-header" @click="cemianshow=!cemianshow">
                 <!-- <img :src="curSession.avatarUrl" alt="" class="webChat-session-avatar"> -->
                 <!-- <span class="webChat-session-name">{{curSession.name}}</span> -->
                 <span class="webChat-session-text" v-if="curSession.type==='group'">({{onlineUsers.length}})</span>
@@ -329,7 +329,7 @@
               </li>
             </ul>
           </div>
-          <!-- <div class="iChat-app-panel scroll" v-show="curMenu==='about'">
+          <div class="iChat-app-panel scroll" v-show="curMenu==='about'">
             <div class="about-header">关于</div>
             <ul class="about-list">
               <li>
@@ -361,7 +361,7 @@
                 </a>
               </li>
             </ul>
-          </div> -->
+          </div>
         </div>
         <div class="iChat-menu-warp">
           <div class="iChat-menu-item" :class="{active:curMenu==='chat'}" @click="curMenu='chat'">

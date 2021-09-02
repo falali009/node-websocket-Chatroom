@@ -34,7 +34,7 @@
         setting: {
           isTime: true,
           isName: true,
-          isVoice:true
+          isVoice:false
         },
         about:{
           version:"v1.0",
